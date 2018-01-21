@@ -1,0 +1,79 @@
+<!doctype>
+<html>
+<head>
+    <style>
+        #rectCanvas {
+            border: 5px solid black;
+            background-size: 100%;
+            padding: 1px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        var myCanvas, rectCanvas, ctx, cir, rec, cirCoordinatesX, cirCoordinatesY;
+
+        function printMousePos(event) {
+            console.log("clientX: " + event.clientX +
+                " - clientY: " + event.clientY);
+        }
+
+        function moveTo(event) {
+            ctx.arc(event.xclientX, event.clientY, cir.value, 0, 2 * Math.PI);
+        }
+
+        function getCircle() {
+            cir = document.getElementById("circle");
+            myCanvas = document.getElementById("rectCanvas");
+            console.log(cir.value);
+            ctx = myCanvas.getContext("2d");
+            cirCoordinatesX = Math.floor((Math.random() * (504 - cir.value)));
+            cirCoordinatesY = Math.floor((Math.random() * (504 - cir.value)));
+            ctx.beginPath();
+            ctx.arc(cirCoordinatesX, cirCoordinatesY, cir.value, 0, 2 * Math.PI);
+            ctx.stroke();
+            myCanvas.addEventListener('click', moveTo);
+        }
+
+        function getRect() {
+            rec = document.getElementById("rectangle");
+            rectCanvas = document.getElementById("rectCanvas");
+            ctx = rectCanvas.getContext("2d");
+            ctx.clearRect(0, 0, 504, 504);
+            ctx.beginPath();
+            var rectCoordinatesX = Math.floor((Math.random() * (504 - rec.value)));
+            var rectCoordinatesY = Math.floor((Math.random() * (504 - rec.value)));
+            ctx.rect(rectCoordinatesX, rectCoordinatesY, rec.value, rec.value);
+            var subrect = rec.value / 8;
+            for (var x = 0; x < 8; x++) {
+                for (var y = 0; y < 8; y++) {
+                    ctx.fillStyle = "green";
+                    ctx.rect(coordinatesX + 4 + ((subrect + 4) * x), coordinatesY + 4 + ((subrect + 4) * y), subrect, subrect);
+                }
+            }
+            ctx.stroke();
+        }
+
+        function draw() {
+            var rectCanvas = document.getElementById("rectCanvas");
+            ctx = rectCanvas.getContext("2d");
+        }
+    </script>
+</head>
+<body onload="draw()">
+<div>
+    <h1> fuck you </h1>
+</div>
+<canvas id="rectCanvas" width="505" height="505" onclick="printMousePos(event)">
+    canvas not supported
+</canvas>
+<h3>create square of length:
+    <input type="text" id="rectangle" name="rectangle">
+    <button onclick="getRect()">Submit</button>
+</h3>
+<h3>Now create a circle of radius:
+    <input type="text" id="circle" name="circle">
+    <button onclick="getCircle()">submit</button>
+</h3>
+
+</body>
+</html>
