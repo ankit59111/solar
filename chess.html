@@ -43,11 +43,10 @@
              rectCoordinatesX = Math.floor((Math.random() * (504 - rec.value)));
              rectCoordinatesY = Math.floor((Math.random() * (504 - rec.value)));
             ctx.rect(rectCoordinatesX, rectCoordinatesY, rec.value, rec.value);
-            var subrect = rec.value / 8;
-            for (var x = 0; x < 8; x++) {
-                for (var y = 0; y < 8; y++) {
+            for (var x = 0; x < (rec.value/2)-2; x++) {
+                for (var y = 0; y < (rec.value/2)-2; y++) {
                     ctx.fillStyle = "green";
-                    ctx.rect(rectCoordinatesX + 4 + ((subrect + 4) * x), rectCoordinatesY + 4 + ((subrect + 4) * y), subrect, subrect);
+                    ctx.rect(rectCoordinatesX + 2*x, rectCoordinatesY + 2*y, 1, 1);
                 }
             }
             ctx.stroke();
