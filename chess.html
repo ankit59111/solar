@@ -18,7 +18,13 @@
         }
 
         function moveTo(event) {
-            ctx.arc(event.xclientX, event.clientY, cir.value, 0, 2 * Math.PI);
+            console.log('it is working');
+            ctx.clearRect(cirCoordinatesX-cir.value,cirCoordinatesY-cir.value , 2*cir.value, 2*cir.value);
+            ctx.beginPath();
+            ctx.arc(event.clientX, event.clientY, cir.value, 0, 2 * Math.PI);
+            ctx.stroke();
+            cirCoordinatesX = event.clientX;
+            cirCoordinatesY= event.clientY;
         }
 
         function getCircle() {
@@ -29,6 +35,7 @@
             cirCoordinatesX = Math.floor((Math.random() * (504 - cir.value)));
             cirCoordinatesY = Math.floor((Math.random() * (504 - cir.value)));
             ctx.beginPath();
+            ctx.fillStyle = "green";
             ctx.arc(cirCoordinatesX, cirCoordinatesY, cir.value, 0, 2 * Math.PI);
             ctx.stroke();
             myCanvas.addEventListener('click', moveTo);
