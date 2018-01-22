@@ -25,12 +25,13 @@
             ctx.stroke();
             cirCoordinatesX = event.clientX;
             cirCoordinatesY= event.clientY;
+
+
         }
 
         function getCircle() {
             cir = document.getElementById("circle");
             myCanvas = document.getElementById("rectCanvas");
-            console.log(cir.value);
             ctx = myCanvas.getContext("2d");
             cirCoordinatesX = Math.floor((Math.random() * (504 - cir.value)));
             cirCoordinatesY = Math.floor((Math.random() * (504 - cir.value)));
@@ -69,9 +70,6 @@
 <div>
     <h1> Solar Labs </h1>
 </div>
-<canvas id="rectCanvas" width="505" height="505" onclick="printMousePos(event)">
-    canvas not supported
-</canvas>
 <h3>create square of length:
     <input type="text" id="rectangle" name="rectangle">
     <button onclick="getRect()">Submit</button>
@@ -80,6 +78,9 @@
     <input type="text" id="circle" name="circle">
     <button onclick="getCircle()">submit</button>
 </h3>
+<canvas id="rectCanvas" width="505" height="505" onclick="printMousePos(event)">
+    canvas not supported
+</canvas>
 
 </body>
 </html>
